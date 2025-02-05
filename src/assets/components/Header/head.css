@@ -1,3 +1,14 @@
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 header {
     background: linear-gradient(90deg, rgb(0, 0, 0), rgb(0, 44, 56), rgb(0, 0, 0));
     height: 60px;
@@ -11,6 +22,7 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
+    animation: slideDown 0.8s ease-in-out;
 }
 
 .header-container {
@@ -27,9 +39,9 @@ header {
 }
 
 .header-container ul li a {
-    color: rgb(214, 249, 255);
+    color: rgb(255, 255, 255);
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .right{
@@ -38,10 +50,9 @@ header {
 }
 
 .search-icon, .menu-icon, .user-icon {
-    font-size: 24px;
+    font-size: 19px;
     color: white;
     cursor: pointer;
-    margin-right: 15px;
 }
 
 .menu-icon, .user-icon {
@@ -50,7 +61,7 @@ header {
 
 .mobile-menu, .user-menu {
     position: absolute;
-    top: 60px;
+    top: 65px;
     left: 0;
     width: 100%;
     background: rgba(0, 44, 56, 0.95);
@@ -84,12 +95,20 @@ header {
     cursor: pointer;
 }
 
+@keyframes moveGradientInfinite {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
 
 header .logo {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 20%;
+    top: 40%;
     width: 250px;
     height: 70px;
     display: flex;
@@ -101,6 +120,7 @@ header .logo {
     background-size: 200% 100%;
     animation: moveGradientInfinite 4s linear infinite;
     overflow: hidden;
+    z-index: 1;
 }
 
 header .logo img {
@@ -108,13 +128,64 @@ header .logo img {
     height: 250px;
 }
 
-@media (max-width: 1000px) {
+
+
+.mobile-menu, .user-menu, .all-menu {
+    position: absolute;
+    top: 90px; 
+    left: 6%;
+    transform: translateX(-50%);
+    width: 90%;
+    background: rgb(0, 44, 56);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(-10px);
+  }
+  
+  .mobile-menu.show, .user-menu.show, .all-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .mobile-menu ul, .user-menu ul, .all-menu ul{
+    list-style: none;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .mobile-menu ul li, .user-menu ul li, .all-menu ul li {
+    padding: 10px 0;
+  }
+  
+  .mobile-menu ul li a, .user-menu ul li a, .all-menu ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    /* font-weight: bold; */
+  }
+  
+  .close-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 1000px) {
     .header-container nav {
         display: none; 
     }
 
     .menu-icon, .user-icon {
         display: block; 
+    }
+    .search-icon{
+        margin-right: 15px;
     }
 }
 
@@ -123,8 +194,13 @@ header .logo img {
         display: none;
     }
 
-
     .menu-icon, .user-icon {
         display: none; 
+    }
+}
+
+@media (min-width: 500px){
+    .all-menu {
+        display: none;
     }
 }
