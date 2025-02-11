@@ -1,13 +1,14 @@
 import React from "react";
-import Slider from "../../components/Slider/Slider";
 import ParticlesBackground from "../../components/Particles/ParticlesBackground";
-import CustomSlider from "../../components/CustomSwiper/CustomSwiper";
+import Slider from "../../components/Slider/Slider";
 
 const Home = () => {
   return (
     <>
       <ParticlesBackground />
-      <CustomSlider/>
+      <section>
+        <Slider />
+      </section>
     </>
   );
 };

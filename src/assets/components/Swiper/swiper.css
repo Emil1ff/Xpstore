@@ -1,9 +1,0 @@
-.custom{
-    display: none;
-}
-
-@media (max-width: 1070px) {
-    .custom{
-        display: block;
-    }
-}
